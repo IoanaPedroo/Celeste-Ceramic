@@ -1,5 +1,6 @@
 import {Avatar, List, ListItem, ListItemAvatar, ListItemText} from "@mui/material";
 import React from "react";
+import './Categories.css'
 
 
 const Categories = () => {

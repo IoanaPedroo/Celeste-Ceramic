@@ -6,6 +6,7 @@ import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar";
 import Slider from "./Components/Slider";
 import PageCategories from "./Components/Page-Categories";
+import ContactUs from "./Components/Contact-us";
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
         <Router>
             <Routes>
                 <Route path="/category"  element={(<PageCategories/>)}/>
-                <Route path="/about" />
+                <Route path="/contact" element={(<ContactUs/>)}/>
                 <Route path="/sign-up" />
                 <Route path="/" element={(<Slider/>)}/>
             </Routes>

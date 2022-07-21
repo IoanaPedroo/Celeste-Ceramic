@@ -1,8 +1,11 @@
+import AddressMap from "./AddressMap";
 
 
 const ContactUs = () => {
     return(
-        <div></div>
+        <div>
+            <AddressMap/>
+        </div>
     )
 }
 

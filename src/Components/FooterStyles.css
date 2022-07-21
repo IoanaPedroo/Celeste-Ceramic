@@ -144,11 +144,10 @@
     width: 35px;
     height: 35px;
     cursor: pointer;
-    background-color:  #33383b;
     border-radius: 2px;
-
+    background-color: white;
+    color:lightseagreen;
     font-size: 20px;
-    color: black;
     text-align: center;
     line-height: 35px;
 
@@ -171,8 +170,6 @@
         text-align: center;
     }
 
-    .footer-distributed .footer-center i{
-        margin-left: 0;
-    }
+
 
 }

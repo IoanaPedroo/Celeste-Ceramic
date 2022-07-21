@@ -55,10 +55,10 @@ function Footer(){
 
                 <div className="footer-icons">
 
-                    <a href="https://www.facebook.com/celesteceramicasrl/"><i className="fa fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/celesteceramica/"><i className="fa fa-instagram"></i></a>
-                    <a href="#"><i className="fa fa-linkedin"></i></a>
-                    <a href="#"><i className="fa fa-github"></i></a>
+                    <a href="https://www.facebook.com/celesteceramicasrl/" className="fa fa-facebook"></a>
+                    <a href="https://www.instagram.com/celesteceramica/" className="fa fa-instagram"></a>
+                    <a href="#" className="fa fa-linkedin"></a>
+                    <a href="#" className="fa fa-github"></a>
 
                 </div>
 

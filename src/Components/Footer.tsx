@@ -12,7 +12,7 @@ function Footer(){
                 <p className="footer-links">
                     <a href="/" className="link-1">Home</a>
 
-                    <a href="/blog">Blog</a>
+                    <a href="/blog">Blogul</a>
 
                     <a href="/newsletter">Newsletter</a>
 

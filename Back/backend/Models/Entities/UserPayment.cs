@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models.Entities
 {
+    [Table("UsersPayment")]
     public class UserPayment
     {
         [Key]
@@ -12,7 +13,7 @@ namespace backend.Models.Entities
         [Required]
         public User User { get; set; }
 
-        [Column("PaymentType", TypeName = "varchar")]
+        [Column("PaymentType")]
         public string PaymentType { get; set; }
         public int AccountNumber { get; set; } 
         public DateOnly Expiry { get; set; }

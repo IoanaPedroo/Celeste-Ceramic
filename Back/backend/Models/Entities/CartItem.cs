@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models.Entities
 {
+    [Table("CartItems")]
     public class CartItem
     {
         [Key]
@@ -11,11 +12,12 @@ namespace backend.Models.Entities
         public int Id { get; set; }
         [Required]
         public Product Product { get; set; }
+        [Required]
         public int  Quantity { get; set; }
         [Required]
-        public Cart ShoppingSession { get; set; }
-        
-        public TimestampAttribute Date { get; set; }
+        public Cart Cart { get; set; }
+        [Required]
+        public DateTime Date { get; set; }
 
 
 

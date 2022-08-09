@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models.Entities
 {
+    [Table("Products")]
     public class Product
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -12,15 +13,14 @@ namespace backend.Models.Entities
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty; 
         public int Price { get; set; }
-        public string Currency { get; set; } = string.Empty ;
-     
-        public Discount Discount { get; set; }
+        public string Currency { get; set; } = string.Empty;
+        public Discount? Discount { get; set; }
         [Required]
         public Category Category { get; set; }
         [Required]
         public ProductInventory ProductInventory { get; set; }
 
-        [Column("ImagePath", TypeName = "nvarchar")]
+        [Column("ImagePath")]
         public byte[] Image { get; set; }
 
 

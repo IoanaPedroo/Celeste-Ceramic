@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models.Entities
 {
+    [Table("OrdersDetails")]
     public class OrderDetails
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

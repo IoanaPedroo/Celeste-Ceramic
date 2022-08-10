@@ -11,7 +11,7 @@ namespace backend.Models.Entities
         [Required]
         public int Id { get; set; }
         [Required]
-        public string Type { get; set; }
+        public List<string> Type { get; set; }
         [Required]
         public string Permissions { get; set; } 
   

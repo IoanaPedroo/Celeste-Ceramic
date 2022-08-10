@@ -17,7 +17,6 @@ namespace backend.Models.Entities
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public AdminType Type { get; set; }
-        public UserAddress Address { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime UpdatedDate { get; set; }
         public string UpdatedBy { get; set; } 

@@ -15,9 +15,7 @@ namespace backend.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().ToTable("Product");
-            modelBuilder.Entity<Category>().ToTable("Category");
-/*          modelBuilder.Entity<User>().Property(x => x.Password).HasConversion(dbValue => dbValue.Concat("text").ToString(), myValue => myValue.ToLower());
+/*            modelBuilder.Entity<User>().Property(x => x.Password).HasConversion(dbValue => dbValue.Concat("text").ToString(), myValue => myValue.ToLower());
 */        }
     }
 }

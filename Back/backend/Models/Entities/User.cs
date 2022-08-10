@@ -8,6 +8,7 @@ namespace backend.Models.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Required]
         public int Id { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }

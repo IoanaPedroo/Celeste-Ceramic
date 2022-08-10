@@ -3,13 +3,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace backend.Models.Entities
 {
+    [Table("AdminTypes")]
     public class AdminType
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Required]
-        public int Id { get; set; }  
-        public string Type { get; set; } 
+        public int Id { get; set; }
+        [Required]
+        public string Type { get; set; }
+        [Required]
         public string Permissions { get; set; } 
   
 

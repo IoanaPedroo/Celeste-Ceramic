@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
-    [ApiController, Route("/product")]
+    [ApiController, Route("/[controller]")]
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;

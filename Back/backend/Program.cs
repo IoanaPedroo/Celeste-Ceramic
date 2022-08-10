@@ -5,14 +5,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-
+builder.Services.AddDbContext<StoreContext>(options => options.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=PotteryShopDb;Trusted_Connection=True;"));
 
 var app = builder.Build();
 // migrate any database changes on startup (includes initial db creation)
 using (var scope = app.Services.CreateScope())
 {
-    var dataContext = scope.ServiceProvider.GetRequiredService<ContextDb>();
+    var dataContext = scope.ServiceProvider.GetRequiredService<StoreContext>();
     dataContext.Database.Migrate();
 }
 

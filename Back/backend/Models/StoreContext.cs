@@ -3,13 +3,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace backend.Models
 {
-    public class ContextDb : DbContext
+    public class StoreContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<User> Users { get; set; }
 
-        public ContextDb(DbContextOptions<ContextDb> options): base(options)
+        public StoreContext(DbContextOptions<StoreContext> options): base(options)
         {
 
         }

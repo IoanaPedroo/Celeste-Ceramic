@@ -19,8 +19,7 @@ namespace backend.Controllers
         [EnableCors("Policy")]
         public JsonResult GetAllProducts()
         {
-            var products = _productRepository.GetAllProducts();
-            return Json(products);
+            return _productRepository.GetAllProducts();
         }
         [HttpGet("{id:long}")]
         public Product GetProductById(long id)

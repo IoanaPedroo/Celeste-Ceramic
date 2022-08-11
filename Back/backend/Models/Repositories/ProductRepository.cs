@@ -5,6 +5,7 @@ namespace backend.Models.Repositories
 {
     public class ProductRepository : IProductRepository
     {
+
         private readonly StoreContext _context;
 
         public ProductRepository(StoreContext context)
@@ -26,6 +27,7 @@ namespace backend.Models.Repositories
         {
             var products = _context.Products.ToList();
             return products;
+
         }
 
         public Product GetProductById(long id)

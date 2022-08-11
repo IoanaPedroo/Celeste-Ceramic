@@ -31,9 +31,10 @@ namespace backend.Controllers
             _userRepository.DeleteUserById(id);
         }
         [HttpPost]
-        public void AddUser(User user)
+        public ActionResult AddUser(User user)
         {
             _userRepository.AddUser(user);
+            return Ok(200);
         }
 
         [HttpPut("{id:long}")]

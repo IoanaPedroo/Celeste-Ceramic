@@ -21,7 +21,9 @@ namespace backend.Models.Entities
         public ProductInventory? ProductInventory { get; set; }
 
         [Column("ImagePath")]
+
         public string? Image { get; set; }
+
 
 
     }

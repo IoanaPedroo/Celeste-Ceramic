@@ -16,9 +16,10 @@ namespace backend.Controllers
 
         [HttpGet]
 
-        public List<Product> GetAllProducts()
+        public JsonResult GetAllProducts()
         {
-            return _productRepository.GetAllProducts();
+            List<Product> products = _productRepository.GetAllProducts();
+            return Json(products);
         }
         [HttpGet("{id:long}")]
         public Product GetProductById(long id)

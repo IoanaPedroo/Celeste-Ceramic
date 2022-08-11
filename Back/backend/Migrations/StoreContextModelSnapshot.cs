@@ -17,7 +17,7 @@ namespace backend.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "6.0.8")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -36,11 +36,12 @@ namespace backend.Migrations
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar")
+                        .HasColumnName("Role");
 
                     b.HasKey("Id");
 
-                    b.ToTable("AdminType");
+                    b.ToTable("AdminTypes");
                 });
 
             modelBuilder.Entity("backend.Models.Entities.Category", b =>
@@ -53,15 +54,17 @@ namespace backend.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("backend.Models.Entities.Discount", b =>
@@ -79,8 +82,8 @@ namespace backend.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("DiscountPercent")
                         .HasColumnType("int");
@@ -89,15 +92,15 @@ namespace backend.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.Property<DateTime>("Updated")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Discount");
+                    b.ToTable("Discounts");
                 });
 
             modelBuilder.Entity("backend.Models.Entities.Product", b =>
@@ -119,12 +122,12 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DiscountId")
+                    b.Property<int?>("DiscountId")
                         .HasColumnType("int");
 
                     b.Property<string>("Image")
                         .IsRequired()
-                        .HasColumnType("nvarchar")
+                        .HasColumnType("nvarchar(max)")
                         .HasColumnName("ImagePath");
 
                     b.Property<string>("Name")
@@ -145,7 +148,7 @@ namespace backend.Migrations
 
                     b.HasIndex("ProductInventoryId");
 
-                    b.ToTable("Product", (string)null);
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("backend.Models.Entities.ProductInventory", b =>
@@ -167,7 +170,7 @@ namespace backend.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProductInventory");
+                    b.ToTable("ProductsInventory");
                 });
 
             modelBuilder.Entity("backend.Models.Entities.User", b =>
@@ -200,6 +203,10 @@ namespace backend.Migrations
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
+                    b.Property<string>("Token")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("TypeId")
                         .HasColumnType("int");
 
@@ -231,9 +238,7 @@ namespace backend.Migrations
 
                     b.HasOne("backend.Models.Entities.Discount", "Discount")
                         .WithMany()
-                        .HasForeignKey("DiscountId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DiscountId");
 
                     b.HasOne("backend.Models.Entities.ProductInventory", "ProductInventory")
                         .WithMany()

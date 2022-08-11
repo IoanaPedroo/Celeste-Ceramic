@@ -7,12 +7,13 @@ namespace backend.Models.Entities
     [Table("Users")]
     public class User
     {
-        public User(string? userName1, string securityStamp, string? userName2, string? password)
+        public User(string userName1, string securityStamp, string password)
         {
             UserName1 = userName1;
             SecurityStamp = securityStamp;
-            UserName2 = userName2;
             Password = password;
+        }
+        public User() { 
         }
 
         [Key]

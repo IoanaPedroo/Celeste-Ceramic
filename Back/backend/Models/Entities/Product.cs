@@ -21,7 +21,7 @@ namespace backend.Models.Entities
         public ProductInventory ProductInventory { get; set; }
 
         [Column("ImagePath")]
-        public byte[] Image { get; set; }
+        public string Image { get; set; }
 
 
     }

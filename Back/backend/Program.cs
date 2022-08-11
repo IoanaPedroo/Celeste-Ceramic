@@ -1,4 +1,6 @@
 using backend.Models;
+using backend.Models.Interfaces;
+using backend.Models.Repositories;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -17,6 +19,8 @@ builder.Services.AddDbContext<StoreContext>(options => options.UseSqlServer("Ser
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<StoreContext>()
     .AddDefaultTokenProviders();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+    
 
 // Adding Authentication
 builder.Services.AddAuthentication(options =>
@@ -42,12 +46,12 @@ builder.Services.AddAuthentication(options =>
 });
 var app = builder.Build();
 // migrate any database changes on startup (includes initial db creation)
-
 using (var scope = app.Services.CreateScope())
 {
     var dataContext = scope.ServiceProvider.GetRequiredService<StoreContext>();
     dataContext.Database.Migrate();
 }
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

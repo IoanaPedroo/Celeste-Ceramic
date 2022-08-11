@@ -72,7 +72,7 @@ namespace backend.Controllers
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username
             };
-            _userRepository.AddUser(new User(user.UserName, user.SecurityStamp, user.UserName, model.Password));
+            _userRepository.AddUser(new User(user.UserName, user.SecurityStamp, model.Password));
             if (dbContext.Users.FirstOrDefault(x => x.Username == user.UserName) == null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
 

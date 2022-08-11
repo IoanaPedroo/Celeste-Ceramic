@@ -15,6 +15,7 @@ namespace backend.Models
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AdminType>().Property(x => x.Type).HasConversion(myValue => String.Join(",", myValue), dbValue => dbValue.Split(",", StringSplitOptions.RemoveEmptyEntries).ToList());
 /*            modelBuilder.Entity<User>().Property(x => x.Password).HasConversion(dbValue => dbValue.Concat("text").ToString(), myValue => myValue.ToLower());
 */        }
     }

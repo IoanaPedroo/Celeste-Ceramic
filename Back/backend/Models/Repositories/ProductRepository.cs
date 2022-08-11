@@ -32,7 +32,8 @@ namespace backend.Models.Repositories
 
         public Product GetProductById(long id)
         {
-            throw new NotImplementedException();
+           var product = _context.Products.FirstOrDefault(x => x.Id == id);
+           return product;
         }
 
         public void UpdateProductById(long id)

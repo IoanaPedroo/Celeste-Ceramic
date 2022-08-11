@@ -25,7 +25,7 @@ builder.Services.AddCors(options =>
         builder =>
         {
             builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-            builder.WithOrigins("http://localhost:3000/").AllowAnyHeader().AllowAnyMethod();
+            builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000/");
 
         }
         );
@@ -61,11 +61,7 @@ builder.Services.AddAuthentication(options =>
 });
 var app = builder.Build();
 // migrate any database changes on startup (includes initial db creation)
-using (var scope = app.Services.CreateScope())
-{
-    var dataContext = scope.ServiceProvider.GetRequiredService<StoreContext>();
-    dataContext.Database.Migrate();
-}
+
 
 
 // Configure the HTTP request pipeline.

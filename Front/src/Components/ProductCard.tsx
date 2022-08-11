@@ -1,6 +1,7 @@
 import { Avatar, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
 import { isNamedExportBindings } from "typescript"
+import imageUrl from "../products/one.jpg"
 
 
 const ProductCard=(props:any)=>{

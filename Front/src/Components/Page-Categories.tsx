@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import './ProductCard.css'
 import './Categories.css'
+import imageUrl from "../products/one.jpg";
 
 
 // export interface Props {
@@ -26,24 +27,24 @@ const Categories = () => {
     // ];
 
     let [allProducts, GetAllProducts] = useState([{id: "", name: "", description: "", price: "", currency: "", discount: "", category: "", productinventory: "", image: "" }])
-    useEffect(()=>{
-        fetch(`https://localhost:7202/product/getallproducts`, 
-        { method: "GET",
-    headers: {'Access-Control-Allow-Origin': 'http://localhost:3000'}
-    })
-        .then(response=>response.json())
-        .then((response) => {GetAllProducts(response)})
+    useEffect(() => {
+        fetch(`/product`,
+            {
+                method: "GET"
+            })
+            .then(response => response.json())
+            .then((response) => GetAllProducts(response))
     }, [])
-    console.log("yoyoyyo")
     console.log(allProducts)
+
     return(
         <div>
             <h1>Products Page</h1>
             <List className="grid">
-
                 {allProducts.map((product) => (
-                    <div className="element">
-                        <ListItem key={product.id} />
+                    <div key={product.id} className="element">
+                        <ListItem  />
+                        <h1>{product?.image}</h1>
                         <ProductCard pictureUrl = {product.image} productName = {product.name}
                                      price = {product.price} currency = {product.currency} description = {product.description}/>
                     </div>

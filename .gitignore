@@ -9,7 +9,7 @@ node_modules/
 back/.vs/
 back/backend/obj/
 front/build/
-
+.vs/
 # testing
 /coverage
 

@@ -16,12 +16,12 @@ namespace backend.Models.Entities
         public string Currency { get; set; } = string.Empty;
         public Discount? Discount { get; set; }
         [Required]
-        public Category Category { get; set; }
+        public Category? Category { get; set; }
         [Required]
-        public ProductInventory ProductInventory { get; set; }
+        public ProductInventory? ProductInventory { get; set; }
 
         [Column("ImagePath")]
-        public byte[] Image { get; set; }
+        public string? Image { get; set; }
 
 
     }

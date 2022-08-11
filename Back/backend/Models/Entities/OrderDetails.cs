@@ -16,7 +16,7 @@ namespace backend.Models.Entities
         [Required]
         public PaymentDetails Payment { get; set; }
         public DateTime CreatedTime { get; set; }
-        public string ShippingAddress { get; set; }
+        public string? ShippingAddress { get; set; }
 
     }
 }

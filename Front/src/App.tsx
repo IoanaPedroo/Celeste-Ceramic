@@ -10,6 +10,7 @@ import Register from "./Components/Register";
 import SignUp from "./Components/Sign-up";
 import AboutUs from "./Components/About-us";
 import Dashboard from './Components/Dashboard';
+import ProductDetails from './Components/ProductDetails';
 
 
 
@@ -22,13 +23,14 @@ function App() {
       <Navbar/>
         <Router>
             <Routes>
-                <Route path="/category"  element={(<PageCategories/>)}/>
+                <Route path="/products"  element={(<PageCategories/>)}/>
                 <Route path="/about" element={(<AboutUs/>)}/>
                 <Route path="/contact" element={(<ContactUs/>)}/>
                 <Route path="/sign-up" element={(<SignUp/>)}/>
                 <Route path="/register" element={(<Register/>)}/>
                 <Route path="/" element={(<Slider/>)}/>
                 <Route path="/dashboard" element={(<Dashboard/>)}/>
+                {/* <Route exact path="/catalog/:id" component={ProductDetails}/> */}
             </Routes>
         </Router>
 

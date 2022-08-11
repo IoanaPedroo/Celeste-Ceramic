@@ -1,27 +1,30 @@
 import { Avatar, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material"
-import { Props } from "./Page-Categories"
+import { Link } from "react-router-dom"
+import { isNamedExportBindings } from "typescript"
 
-export default function ProductCard({pictureUrl, productName, price, currency, description}:Props){
+
+const ProductCard=(props:any)=>{
+    console.log(props)
     return (
         <>
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
                     height="150"
-                    image={pictureUrl}
-                    alt="green iguana"
+                    image={props.image}
+                    alt="iguana"
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {productName} {price} {currency}
+                        {props.name} {props.price} {props.currency}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        {description}
+                        {props.description}
                     </Typography>
                 </CardContent>
                 <CardActions>
                     <Button size="small">Add to cart</Button>
-                    <Button size="small">Learn More</Button>
+                    <Button component ={Link} to={`/catalog/${props.name}`}size="small">Learn More</Button>
                 </CardActions>
             </Card>
 
@@ -30,3 +33,4 @@ export default function ProductCard({pictureUrl, productName, price, currency, d
     )
 
 }
+export default ProductCard;

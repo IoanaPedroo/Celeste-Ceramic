@@ -5,7 +5,12 @@ namespace backend.Models.Repositories
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly IProductRepository _repository;
+        private readonly StoreContext _context;
+
+        public ProductRepository(StoreContext context)
+        {
+            _context = context;
+        }
 
         public void AddProduct(Product product)
         {
@@ -19,7 +24,8 @@ namespace backend.Models.Repositories
 
         public List<Product> GetAllProducts()
         {
-            throw new NotImplementedException();
+            var products = _context.Products.ToList();
+            return products;
         }
 
         public Product GetProductById(long id)

@@ -1,10 +1,11 @@
 ﻿using backend.Models.Entities;
 using backend.Models.Interfaces;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
-    [ApiController, Route("/[controller]")]
+    
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;
@@ -15,10 +16,11 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-
-        public List<Product> GetAllProducts()
+        [EnableCors("Policy")]
+        public JsonResult GetAllProducts()
         {
-            return _productRepository.GetAllProducts();
+            var products = _productRepository.GetAllProducts();
+            return Json(products);
         }
         [HttpGet("{id:long}")]
         public Product GetProductById(long id)

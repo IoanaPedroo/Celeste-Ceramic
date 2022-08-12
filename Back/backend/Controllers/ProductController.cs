@@ -22,6 +22,7 @@ namespace backend.Controllers
             var products = _productRepository.GetAllProducts();
             return Json(products);
         }
+
         [HttpGet("{id:long}")]
         public JsonResult GetProductById(long id)
         {
@@ -40,9 +41,9 @@ namespace backend.Controllers
         }
 
         [HttpPut("{id:long}")]
-        public void UpdateProductById(long id)
+        public void UpdateProductById(long id, Product product)
         {
-            _productRepository.UpdateProductById(id);
+            _productRepository.UpdateProductById(id, product);
         }
 
     }

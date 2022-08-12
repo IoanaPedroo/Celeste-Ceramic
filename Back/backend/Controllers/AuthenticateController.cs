@@ -11,19 +11,17 @@ using System.Text;
 
 namespace backend.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("/authenticate")]
     [ApiController]
     public class AuthenticateController : Controller
     {
-        private readonly IUserRepository _userRepository;
+        /*private readonly IUserRepository _userRepository*/
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IConfiguration _configuration;
         public AuthenticateController(
-            IUserRepository userManager,
             RoleManager<IdentityRole> roleManager,
             IConfiguration configuration)
         {
-            _userRepository = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
         }
@@ -34,7 +32,7 @@ namespace backend.Controllers
             var user = dbContext.Users.FirstOrDefault(x => x.Username == model.Username);
             if (user != null && user.Password == model.Password)
             {
-                var userRoles = user.Type.Type;
+                /*var userRoles = user.Type.Type;
 
                 var authClaims = new List<Claim>
                 {
@@ -53,7 +51,8 @@ namespace backend.Controllers
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     expiration = token.ValidTo
-                });
+                });*/
+                return Ok(200);
             }
             return Unauthorized();
         }
@@ -66,16 +65,18 @@ namespace backend.Controllers
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
 
-            IdentityUser user = new()
+            /*IdentityUser user = new()
             {
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
                 UserName = model.Username
-            };
-            _userRepository.AddUser(new User(user.UserName, user.SecurityStamp, model.Password));
-            if (dbContext.Users.FirstOrDefault(x => x.Username == user.UserName) == null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
+            };*/
 
+            /*var user = new RegisterModel(model.Email, model.Username, model.Password);*/
+            /*dbContext.Users.Add(new User(user.Username, user.Email, user.Password));
+            if (dbContext.Users.FirstOrDefault(x => x.Username == model.Username) == null)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
+*/
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }
         [HttpPost]
@@ -99,7 +100,7 @@ namespace backend.Controllers
 
             if (await _roleManager.RoleExistsAsync(Role))
             {
-                _userRepository.GetUserById(id).Type.Type.Add(Role);
+                /*_userRepository.GetUserById(id).Type.Type.Add(Role);*/
             }
             return Ok(new Response { Status = "Success", Message = "User created successfully!" });
         }

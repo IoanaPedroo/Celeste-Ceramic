@@ -1,6 +1,7 @@
 ﻿using backend.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using backend.Models.Entities;
+using Microsoft.AspNetCore.Cors;
 
 namespace backend.Controllers
 {
@@ -14,15 +15,18 @@ namespace backend.Controllers
         }
 
         [HttpGet]
+        [EnableCors("Policy")]
 
-        public List<User> GetAllUsers()
+        public JsonResult GetAllUsers()
         {
-            return _userRepository.GetAllUsers();
+            var users = _userRepository.GetAllUsers();
+            return Json(users);
         }
         [HttpGet("{id:long}")]
-        public User GetUserById(long id)
+        public JsonResult GetUserById(long id)
         {
-            return _userRepository.GetUserById(id);
+            var user = _userRepository.GetUserById(id);
+            return Json(user);
         }
 
         [HttpDelete]
@@ -38,9 +42,9 @@ namespace backend.Controllers
         }
 
         [HttpPut("{id:long}")]
-        public void UpdateUserById(long id)
+        public void UpdateUserById(long id, User user)
         {
-            _userRepository.UpdateUserById(id);
+            _userRepository.UpdateUserById(id, user);
         }
     }
 }

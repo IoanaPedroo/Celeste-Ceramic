@@ -1,5 +1,6 @@
 ﻿using backend.Models.Entities;
 using backend.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace backend.Models.Repositories
 {
@@ -12,33 +13,46 @@ namespace backend.Models.Repositories
         {
             _context = context;
         }
-
+        //merge
         public void AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Add(product);
+            _context.SaveChanges();
         }
-
+        //merge
         public void DeleteProductById(long id)
         {
-            throw new NotImplementedException();
+            var product = _context.Products.FirstOrDefault(x => x.Id == id);
+            _context.Products.Remove(product);
+            _context.SaveChanges();        
         }
-
+        //merge
         public List<Product> GetAllProducts()
         {
             var products = _context.Products.ToList();
             return products;
 
         }
-
+        //merge
         public Product GetProductById(long id)
         {
            var product = _context.Products.FirstOrDefault(x => x.Id == id);
            return product;
         }
 
-        public void UpdateProductById(long id)
+        //merge
+        public void UpdateProductById(long id, Product product)
         {
-            throw new NotImplementedException();
+            var oldProduct = _context.Products.FirstOrDefault(x => x.Id == id);
+            oldProduct.Category = product.Category;
+            oldProduct.Discount = product.Discount;
+            oldProduct.Currency = product.Currency;
+            oldProduct.Price = product.Price;
+            oldProduct.ProductInventory = product.ProductInventory;
+            oldProduct.Image = product.Image;
+            oldProduct.Name = product.Name;
+            oldProduct.Description = product.Description;
+            _context.SaveChanges();
         }
     }
 }

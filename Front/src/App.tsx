@@ -11,6 +11,7 @@ import SignUp from "./Components/Sign-up";
 import AboutUs from "./Components/About-us";
 import Dashboard from './Components/Dashboard';
 import ProductDetails from './Components/ProductDetails';
+import Product from "./Components/Product";
 
 
 
@@ -30,7 +31,7 @@ function App() {
                 <Route path="/register" element={(<Register/>)}/>
                 <Route path="/" element={(<Slider/>)}/>
                 <Route path="/dashboard" element={(<Dashboard/>)}/>
-                {/* <Route exact path="/catalog/:id" component={ProductDetails}/> */}
+                <Route path="/products/:id" element={(<Product/>)}/>
             </Routes>
         </Router>
 

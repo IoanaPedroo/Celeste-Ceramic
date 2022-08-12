@@ -1,7 +1,7 @@
 ﻿using backend.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using backend.Models.Entities;
-/*using backend.Models.Interfaces;*/
+using Microsoft.AspNetCore.Cors;
 
 namespace backend.Controllers
 {
@@ -13,33 +13,37 @@ namespace backend.Controllers
         {
             _categoryRepository = categoryRepository;
         }
-
+        //merge
         [HttpGet]
-        public List<Category> GetAllCategories()
+        [EnableCors("Policy")]
+        public JsonResult GetAllCategories()
         {
-            return _categoryRepository.GetAllCategories();
+            var categories = _categoryRepository.GetAllCategories();
+            return Json(categories);
         }
+        //merge
         [HttpGet("{id:long}")]
-        public Category GetCategoryById(long id)
+        public JsonResult GetCategoryById(long id)
         {
-            return _categoryRepository.GetCategoryById(id);
+            return Json(_categoryRepository.GetCategoryById(id));
         }
-
+        //merge
         [HttpDelete]
         public void DeleteCategoryById(long id)
         {
             _categoryRepository.DeleteCategoryById(id);
         }
+        //merge
         [HttpPost]
         public void AddCategory(Category category)
         {
             _categoryRepository.AddCategory(category);
         }
-
+        //merge
         [HttpPut("{id:long}")]
-        public void UpdateProductById(long id)
+        public void UpdateProductById(long id, Category category)
         {
-            _categoryRepository.UpdateCategoryById(id);
+            _categoryRepository.UpdateCategoryById(id, category);
         }
 
     }

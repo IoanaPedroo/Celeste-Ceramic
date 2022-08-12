@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import './ProductCard.css'
 import './Categories.css'
-import imageUrl from "../products/one.jpg";
-
+import Product from "./Product";
 
 // export interface Props {
 
@@ -17,16 +16,9 @@ import imageUrl from "../products/one.jpg";
 // }
 
 const Categories = () => {
-    // const products = [
-    //     {productName: 'Cercei stravezii', price: 50, currency: 'lei', description: "handmade pottery", pictureUrl : "/products/five.jpg"},
-    //     {productName: 'Vaza Ming', price: 50, currency: 'lei', description: "handmade pottery", pictureUrl :  "/products/four.jpg"},
-    //     {productName: 'Cana cherry', price: 50, currency: 'lei',description: "handmade pottery", pictureUrl :  "/products/three.jpg"},
-    //     {productName: 'Cana Toucan', price: 50, currency: 'lei', description: "handmade pottery", pictureUrl :  "/products/two.jpg"},
-    //     {productName: 'Vaza Roma', price: 50, currency: 'lei', description: "handmade pottery", pictureUrl :  "/products/one.jpg"},
-    //     {productName: 'Vaza Roma', price: 50, currency: 'lei', description: "handmade pottery", pictureUrl :  "/products/one.jpg"},
-    // ];
-
     let [allProducts, GetAllProducts] = useState([{id: "", name: "", description: "", price: "", currency: "", discount: "", category: "", productinventory: "", image: "" }])
+    let [product, getProduct]= useState(0);
+
     useEffect(() => {
         fetch(`/product`,
             {
@@ -35,21 +27,30 @@ const Categories = () => {
             .then(response => response.json())
             .then((response) => GetAllProducts(response))
     }, [])
-    console.log(allProducts)
 
     return(
         <div>
-            <h1>Products Page</h1>
-            <List className="grid">
-                {allProducts.map((product) => (
-                    <div key={product.id} className="element">
-                        <ListItem  />
-                        <h1>{product?.image}</h1>
-                        <ProductCard pictureUrl = {product.image} productName = {product.name}
-                                     price = {product.price} currency = {product.currency} description = {product.description}/>
-                    </div>
+            {product === 0 &&
+                <>
+                <h1>Products Page</h1>
+                <List className="grid">
+            {allProducts.map((product) => (
+                <div key={product.id} className="element">
+                <ListItem  />
+                    <h1>{product.id}</h1>
+                <ProductCard productId = {product.id} getProduct={getProduct} pictureUrl = {product.image} productName = {product.name}
+                price = {product.price} currency = {product.currency} description = {product.description}/>
+                </div>
                 ))}
-            </List>
+                </List>
+                </>
+            }{product !== 0 &&
+            <>
+                <Product productId={product}/>
+            </>
+            }
+
+
         </div>
 
     )

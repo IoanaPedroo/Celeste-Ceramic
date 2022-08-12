@@ -14,11 +14,15 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
+
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<StoreContext>(options => options.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=PotteryShopDb;Trusted_Connection=True;"));
 
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>()
+    .AddScoped<IUserRepository, UserRepository>()
+    .AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "Policy",
@@ -34,7 +38,11 @@ builder.Services.AddCors(options =>
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<StoreContext>()
     .AddDefaultTokenProviders();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>()
+    .AddScoped<ICategoryRepository, CategoryRepository>()
+    .AddScoped<IUserRepository, UserRepository>();
+
+
     
 
 // Adding Authentication

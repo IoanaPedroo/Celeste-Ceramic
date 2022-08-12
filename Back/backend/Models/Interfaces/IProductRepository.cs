@@ -8,6 +8,6 @@ namespace backend.Models.Interfaces
         Product GetProductById(long id);
         void DeleteProductById(long id);
         void AddProduct(Product product);
-        void UpdateProductById(long id);
+        void UpdateProductById(long id, Product product);
     }
 }

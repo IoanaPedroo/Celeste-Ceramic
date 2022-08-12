@@ -8,6 +8,6 @@ namespace backend.Models.Interfaces
         User GetUserById(long id);
         void DeleteUserById(long id);
         void AddUser(User user);
-        void UpdateUserById(long id);
+        void UpdateUserById(long id, User user);
     }
 }

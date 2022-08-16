@@ -1,5 +1,6 @@
 {
   "name": "epg",
+  "proxy": "http://localhost:5100",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

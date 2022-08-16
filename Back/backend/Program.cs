@@ -14,18 +14,22 @@ var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
+
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<StoreContext>(options => options.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=PotteryShopDb;Trusted_Connection=True;"));
 
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>()
+    .AddScoped<IUserRepository, UserRepository>()
+    .AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "Policy",
         builder =>
         {
             builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
-            builder.WithOrigins("http://localhost:3000/").AllowAnyHeader().AllowAnyMethod();
+            builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000/");
 
         }
         );
@@ -34,7 +38,11 @@ builder.Services.AddCors(options =>
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<StoreContext>()
     .AddDefaultTokenProviders();
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>()
+    .AddScoped<ICategoryRepository, CategoryRepository>()
+    .AddScoped<IUserRepository, UserRepository>();
+
+
     
 
 // Adding Authentication
@@ -61,11 +69,7 @@ builder.Services.AddAuthentication(options =>
 });
 var app = builder.Build();
 // migrate any database changes on startup (includes initial db creation)
-using (var scope = app.Services.CreateScope())
-{
-    var dataContext = scope.ServiceProvider.GetRequiredService<StoreContext>();
-    dataContext.Database.Migrate();
-}
+
 
 
 // Configure the HTTP request pipeline.

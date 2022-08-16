@@ -8,6 +8,6 @@ namespace backend.Models.Interfaces
         Category GetCategoryById(long id);
         void DeleteCategoryById(long id);
         void AddCategory(Category category);
-        void UpdateCategoryById(long id);
+        void UpdateCategoryById(long id, Category category);
     }
 }

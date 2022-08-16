@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
 {
-    
+    [ApiController, Route("/product")]
     public class ProductController : Controller
     {
         private readonly IProductRepository _productRepository;
@@ -19,12 +19,15 @@ namespace backend.Controllers
         [EnableCors("Policy")]
         public JsonResult GetAllProducts()
         {
-            return Json(_productRepository.GetAllProducts());
+            var products = _productRepository.GetAllProducts();
+            return Json(products);
+
         }
+
         [HttpGet("{id:long}")]
-        public Product GetProductById(long id)
+        public JsonResult GetProductById(long id)
         {
-            return _productRepository.GetProductById(id);   
+            return Json(_productRepository.GetProductById(id));   
         }
 
         [HttpDelete]
@@ -39,9 +42,9 @@ namespace backend.Controllers
         }
 
         [HttpPut("{id:long}")]
-        public void UpdateProductById(long id)
+        public void UpdateProductById(long id, Product product)
         {
-            _productRepository.UpdateProductById(id);
+            _productRepository.UpdateProductById(id, product);
         }
 
     }

@@ -1,17 +1,15 @@
 import { Avatar, Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material"
 import { Link } from "react-router-dom"
-import { isNamedExportBindings } from "typescript"
 
 
 const ProductCard=(props:any)=>{
-    console.log(props)
     return (
-        <>
+        <div onClick={() => {props.getProduct(props.productId); console.log(props)}}>
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
                     height="150"
-                    image={props.image}
+                    image={props.pictureUrl}
                     alt="iguana"
                 />
                 <CardContent>
@@ -24,13 +22,10 @@ const ProductCard=(props:any)=>{
                 </CardContent>
                 <CardActions>
                     <Button size="small">Add to cart</Button>
-                    <Button component ={Link} to={`/catalog/${props.name}`}size="small">Learn More</Button>
+                    <Button component ={Link} to={`/products/${props.id}`}size="small">Learn More</Button>
                 </CardActions>
             </Card>
-
-        </>
-
+        </div>
     )
-
 }
 export default ProductCard;

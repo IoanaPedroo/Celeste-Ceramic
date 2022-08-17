@@ -1,4 +1,4 @@
-import AddressMap from "../../Components/AddressMap";
+import AddressMap from "../../components/AddressMap";
 import "./styles/Contact-us.css";
 
 const ContactUs = () => {

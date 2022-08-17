@@ -5,15 +5,6 @@ import '../../components/styles/ProductCard.css'
 import '../categoryPages/styles/Categories.css'
 import Product from "./Product"
 
-// export interface Props {
-
-//     productName? : string
-//     price? : number
-//     currency? : string
-//     description? : string
-//     pictureUrl : string
-
-// }
 
 const Categories = () => {
     let [allProducts, GetAllProducts] = useState([{id: "", name: "", description: "", price: "", currency: "", discount: "", category: "", productinventory: "", image: "" }])

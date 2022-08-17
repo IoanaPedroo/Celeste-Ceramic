@@ -1,18 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-.idea/
+
 # dependencies
-front/node_modules/
-Front/node_modules/
-dashboard/node_modules/
-dashboard/.idea/
-node_modules/
+/node_modules
 /.pnp
 .pnp.js
-back/.vs/
-back/backend/obj/
-back/backend/bin/
-front/build/
-.vs/
+.idea/
 # testing
 /coverage
 

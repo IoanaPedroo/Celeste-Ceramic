@@ -1,0 +1,15 @@
+.navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 80px;
+}
+
+.navbar-container > a {
+    text-decoration: none;
+    color: black;
+}

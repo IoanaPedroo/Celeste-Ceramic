@@ -1,7 +1,7 @@
 import {Avatar, List, ListItem, ListItemAvatar, ListItemText} from "@mui/material";
 import React, { useEffect, useState } from "react";
-import ProductCard from "../../components/ProductCard"
-import '../../components/styles/ProductCard.css'
+import ProductCard from "../../Components/ProductCard"
+import '../../Components/styles/ProductCard.css'
 import '../categoryPages/styles/Categories.css'
 import Product from "./Product"
 

@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Footer from "./Components/Footer";
+import Navbar from "./Components/Navbar"
 import PageCategories from "./pages/productPages/Page-Categories";
 import ContactUs from "./pages/contactPage/Contact-us";
 import Register from "./pages/authentificationPages/Register";
 import SignUp from "./pages/authentificationPages/Sign-up";
-import AboutUs from "./components/About-us";
+import AboutUs from "./Components/About-us";
 import Product from "./pages/productPages/Product";
-import Slider from "./components/Slider";
+import Slider from "./Components/Slider";
 
 
 

@@ -1,9 +1,9 @@
 import {Avatar, List, ListItem, ListItemAvatar, ListItemText} from "@mui/material";
 import React, { useEffect, useState } from "react";
-import ProductCard from "./ProductCard";
-import './ProductCard.css'
-import './Categories.css'
-import Product from "./Product";
+import ProductCard from "../../components/ProductCard"
+import '../../components/styles/ProductCard.css'
+import '../categoryPages/styles/Categories.css'
+import Product from "./Product"
 
 // export interface Props {
 
@@ -37,7 +37,6 @@ const Categories = () => {
             {allProducts.map((product) => (
                 <div key={product.id} className="element">
                 <ListItem  />
-                    <h1>{product.id}</h1>
                 <ProductCard productId = {product.id} getProduct={getProduct} pictureUrl = {product.image} productName = {product.name}
                 price = {product.price} currency = {product.currency} description = {product.description}/>
                 </div>

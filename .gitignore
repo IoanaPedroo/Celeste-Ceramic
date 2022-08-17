@@ -8,6 +8,7 @@ node_modules/
 .pnp.js
 back/.vs/
 back/backend/obj/
+back/backend/bin/
 front/build/
 .vs/
 # testing

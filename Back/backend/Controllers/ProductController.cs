@@ -21,6 +21,7 @@ namespace backend.Controllers
         {
             var products = _productRepository.GetAllProducts();
             return Json(products);
+
         }
 
         [HttpGet("{id:long}")]

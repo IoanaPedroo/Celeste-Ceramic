@@ -9,7 +9,7 @@ Technologies:
 
 Backend was made using c# ,.net 6.0, entity framework, identity, jwt bearer, postgres database
 
-Frontend was made with CSS, React, Material-UI
+Frontend was made with CSS, React, TypeScript, Material-UI
 
 Team members:
 Ioana Serban 

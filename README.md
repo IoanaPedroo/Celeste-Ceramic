@@ -1,5 +1,13 @@
 # Celeste-Ceramic
-A complex e-commerce app that includes a presentation site, a dashboard and a company management application
+A complex e-commerce app that includes a presentation site and a dashboard panel.
+This projet has completed two out of 6 sprints. (4 days per sprint).
+This application is a asp net core web app that uses attribute and conventional routing to provide informations from the database regarding products, categories and users.
+
+Technologies:
+
+Backend was made using c# ,.net 6.0, entity framework, identity, jwt bearer, postgres database
+
+Frontend was made with CSS, React, Material-UI
 
 Team members:
 Ioana Serban 
